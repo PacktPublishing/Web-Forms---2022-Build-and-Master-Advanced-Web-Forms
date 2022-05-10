@@ -1,0 +1,72 @@
+body {
+    /* browsers add 8px of margin by default - lets remove this */
+    margin: 0;
+    /* vh is just a property related to the actual viewport */
+    min-height: 100vh;
+    align-items: center;
+    padding: 0 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+input[type=range] {
+    margin: 20px 0;
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 7px;
+    cursor: pointer;
+    background: #2998cc;
+    border-radius: 50px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    border-radius: 100%;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,1);
+    cursor: pointer;
+    background: blue;
+    margin-top: -5px;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #1f759c;
+}
+
+.wrapper {
+    width: 500px;
+    position: relative; 
+}
+
+.rangeValue {
+    position: absolute; 
+    top: -50%;
+}
+
+.rangeValue span {
+    background: #2998cc;
+    line-height: 24px;
+    text-align: center;
+    width: 40px;
+    color: white;
+    position: absolute;
+    border-radius: 15%;
+    /* you want the center of the element to line up with the center of its parent element */
+    transform: translate(-50%, 0);
+}
+
+.rangeValue span::before {
+    content: "";
+    /* set position absolute to the output */
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #2998cc;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    /* border-bottom: 10px solid blue; */
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+}
+

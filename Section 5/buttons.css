@@ -1,0 +1,81 @@
+/* define some CSS root variables - always a good practise so we can change styling globally */
+:root {
+    --color-button: #be1f1f;
+    --color-button-background: #ffffff;
+    --color-shadow: rgb(47, 47, 47);
+    --color-form-border: rgb(214, 12, 123);
+    --color-wrapper-background: #e9e9e9;
+    --color-submit-button: #4ea3e9;
+    --color-button-button: #2dd351;
+    --color-reset-button: #fb8917;
+}
+
+body {
+    font-size: 18px;
+    text-align: justify;
+    font-family: Calibri;
+    /* i don't want the containers stretching across entire viewport. So lets add some padding to left and right */
+    padding: 0 10%;
+}
+
+/* now its time to style our buttons */
+button {
+    height: 36px;
+    border: 3px solid var(--color-button);
+    font-size: 1em;
+    background-color: var(--color-button-background);
+    cursor: pointer;
+    box-shadow: 2px 2px var(--color-shadow);
+    margin-right: 10px;
+    margin-top: 5px;
+    /* its always nice to allow padding within the button to create a feeling of space */
+    padding: 0 20px;
+}
+
+/* lets target the :hover selector to style the button when a mouse hovers over it */
+button:hover {
+    opacity: 0.5;
+    }
+    
+/* the :active selector is used to select and style the active link */
+button:active {
+    background-color: rgb(219, 219, 219);
+    opacity: 1;
+    }
+
+/* style buttons with type of submit */
+button[type="submit"] {
+    border: 3px solid var(--color-submit-button);
+    color: var(--color-submit-button);
+}
+
+/* style buttons with type of button */
+button[type="button"] {
+    border: 3px solid var(--color-button-button);
+    color: var(--color-button-button);
+}
+
+/* style buttons with type of reset */
+button[type="reset"] {
+    border: 3px solid var(--color-reset-button);
+    color: var(--color-reset-button);
+}
+
+.wrapper {
+    background-color: var(--color-wrapper-background);
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 3px 3px var(--color-shadow);
+    border: 1px solid var(--color-shadow);
+    margin-bottom: 25px;
+}
+
+
+h1 {
+    margin: 0;
+}
+
+/* our fieldset element has class of form. I did this so that we can now target that fieldset and apply custom styling to it */
+.form {
+    border: 3px dashed var(--color-form-border);
+}

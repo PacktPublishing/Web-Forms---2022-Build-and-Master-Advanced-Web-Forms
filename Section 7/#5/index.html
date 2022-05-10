@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <form>
+
+            <!-- username -->
+            <div>
+                <input type="text" name="first_name" id="first_name" required placeholder=" ">
+                <label for="first_name">Username</label>
+                <span class="checkmark"></span>
+            </div>
+
+            <!-- email -->
+            <div>
+                <input type="email" name="email" id="email" required placeholder=" ">
+                <label for="email">Email Address</label>
+                <div class="errorMessage">
+                    Your email needs to be valid. 
+                </div>
+                <span class="checkmark"></span>
+            </div>
+
+            <!-- password -->
+            <div>
+                <input type="Password" name="Password" id="Password" required placeholder=" " pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
+                <label for="Password">Password</label>
+                <div class="errorMessage">
+                    Your password must contain at least 6 characters, one uppercase, one lowercase and one number.
+                </div>
+                <span class="checkmark"></span>
+            </div>
+
+            <input type="submit" value="Sign Up">
+
+        </form>
+    </body>
+</html>

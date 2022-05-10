@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Fieldset and legend</title>
+    <style>
+        /* center our fieldset nicely */
+        fieldset {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        input[type="radio"] {
+            /* remove the blue button styling by default */
+            appearance: none;
+        }
+
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            /* remove the default square selection border when you toggle the radio button */
+            outline: none;
+            border: 2px solid gray;
+            /* Adjusts the position of the radio buttons on the text baseline */
+            vertical-align: -2px;
+        }
+/* Basically, we build the styling for the radio button "inner circle" using the ::before pseudo element, but set a
+scale(0) transform on it. Remember, scale(0) means we set the original size of the red dot to zero size (in other words, we can't see it). We then use a CSS transition to make it nicely animate into view when the radio is
+selected/checked. */
+        input[type="radio"]::before {
+            display: block;
+            /* we have to define a content property (I know, weird right!), even if we don't have any text inside. This is just how the ::before pseudo element works */
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            background-color: red;
+            font-size: 1em;
+            /* set the original position of red dot */
+            transform: translate(-30px, 0px) scale(0);
+            /* transition the dot back to starting position. The transition property is shorthand for 4 CSS properties: property, duration, timing-function and delay   */
+            transition: all 0.7s ease-in;
+        }
+
+        /* what happens when you check the box. Remember, the checked property will be applied to each radio button clicked on by deafult - the browser does this for us. This means we can target the :checked state. */
+        input[type="radio"]:checked::before {
+            /* set the position of red dot when user clicks */
+            transform: translate(3px, 3px) scale(1);
+            /* animate the transition. We can use the cubic-bezier function which is a set of 4 values that determine our timing. Check out https://cubic-bezier.com/#.17,.67,.83,.67 to create your own custom transition  */
+            transition: all 0.3s cubic-bezier(.76,.74,.8,1.52);
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>Choose your favourite fruit</legend>
+            <p>
+                <label>
+                    <input type="radio" name="fruit" value="cherry">
+                    Cherry
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="fruit" value="banana">
+                    Banana
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="fruit" value="strawberry">
+                    Strawberry
+                </label>
+            </p>
+        </fieldset>
+    </form>
+</body>
+
+</html>

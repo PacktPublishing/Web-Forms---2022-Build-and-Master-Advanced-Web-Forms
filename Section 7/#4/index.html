@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Custom Range Design</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- define our range input type -->
+            <input type="range" id="range" min="0" max="1000" value="500">
+            <output class="rangeValue" id="rangeValue"></output>
+        </div>
+        <!-- add javascript -->
+        <script>
+            // lets grab our input and output elements
+            const range = document.getElementById('range');
+            const rangeOutput = document.getElementById('rangeValue');
+
+            function showValue() {
+                // lets grab the value as a percent
+                const newValue = (range.value - range.min) / (range.max - range.min) * 100;
+                const adjustPosition = 7 - (newValue * 0.14);
+
+                // changing the output value and position of the output element
+                rangeOutput.innerHTML = `<span>${range.value}</span>`; 
+                rangeOutput.style.left = `calc( ${newValue}% + (${adjustPosition}px))`;
+            }
+
+            // set initial value when page loads
+            document.addEventListener('DOMContentLoaded', showValue);
+
+            // call the function every time an 'input' event is fired
+            range.addEventListener('input', showValue);
+
+        </script>
+    </body>
+</html>

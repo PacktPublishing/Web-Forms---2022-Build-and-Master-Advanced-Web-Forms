@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <style>
+            body {
+                background: #333;
+                line-height: 1.2;
+                padding: 20px;
+            }
+
+            #mainForm {
+                width: 250px;
+                border-radius: 10%;
+                background: rgb(49,162,255);
+                padding: 3px 20px 20px 20px;
+            }
+
+            label {
+                display: block;
+                color: #333;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 100%;
+                display: block;
+                padding: 3px;
+                outline: 0;
+                border: 0;
+                margin-bottom: 10px;
+            }
+
+            button {
+                background: #333; 
+                width: 100%;
+                padding: 10px;
+                margin-top: 15px;
+                font-size: 1.1em;
+                color: white;
+                border: 1px solid #111;
+                cursor: pointer; 
+                box-shadow: 0 2px 5px 1px rgb(1, 0, 71, 0.5);
+                border-radius: 5px;
+            }
+
+            .headingWrapper {
+                font-size: 0.7em;
+                color: white; 
+                text-align: center;
+                margin-bottom: 20px; 
+            }
+
+            progress {
+                height: 1.5em;
+                width: 100%; 
+                margin-bottom: 3px;
+            }
+
+            input:valid {
+                background: rgb(95, 255,122);
+            }
+
+        </style>
+    </head>
+    <body>
+        <form id="mainForm">
+            <h1>Progress Form</h1>
+            <div class="headingWrapper">
+                <progress max="100" value="0" id="progress"></progress>
+                <div id="message">The form, its calling you</div>
+            </div>
+
+            <label for="q1">Question 1</label>
+            <input type="text" id="q1" required>
+            <label for="q2">Question 2</label>
+            <input type="text" id="q2" required>
+            <label for="q3">Question 3</label>
+            <input type="text" id="q3" required>
+            <label for="q4">Question 4</label>
+            <input type="text" id="q4" required>
+            <label for="q5">Question 5</label>
+            <input type="text" id="q5" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <script>
+            // lets grab all of our elements
+            let progressBar = document.getElementsByTagName('progress')[0];
+            let message = document.getElementById('message');
+            let form = document.getElementById('mainForm');
+            let requiredInputs = document.getElementsByTagName('input'); 
+
+            // add an event listener on the form iteself (and remember, we can do this because the event of keyup will bubble up the DOM tree)
+            form.addEventListener('keyup', () => {
+                // lets define a variable that keeps track of all the VALID inputs
+                let validInputs = 0; 
+
+                // loop through all of the inputs in our collection, and determine if they are valid. If an input is valid, then we want to increase our validInputs variable
+                for (const input of requiredInputs) {
+                    if(input.validity.valid) {
+                        validInputs++;
+                    }
+                }
+
+                // change the value of the progress bar, and the message depending on how many inputs are valid (i.e. depending on the value of the validInputs variable)
+
+                if (validInputs === 1) {
+                    message.innerHTML = "Nice. Good start";
+                    progressBar.setAttribute('value', '20');
+                }
+                if (validInputs === 2) {
+                    message.innerHTML = "EGGcellent. Keep on cracking";
+                    progressBar.setAttribute('value', '40');
+                }
+                if (validInputs === 3) {
+                    message.innerHTML = "Champion. Don't stop";
+                    progressBar.setAttribute('value', '60');
+                }
+                if (validInputs === 4) {
+                    message.innerHTML = "Whoop whoop ... almost done";
+                    progressBar.setAttribute('value', '80');
+                }
+                if (validInputs === 5) {
+                    message.innerHTML = "GO ON ... PUSH SUBMIT";
+                    progressBar.setAttribute('value', '95');
+                }
+
+            })
+
+        </script>
+    </body>
+</html>

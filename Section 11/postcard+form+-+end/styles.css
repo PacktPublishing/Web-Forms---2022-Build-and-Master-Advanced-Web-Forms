@@ -1,0 +1,140 @@
+/* Let's define our own custom font using the @font-face rule */
+@font-face {
+    /* custom name our font */
+    font-family: 'handwriting';
+    /* grab our font */
+    /* To provide the browser with a hint as to what format a font resource is — so it can select a suitable one — it is possible to include a format type inside a format() function: */
+    src: 
+        url('fonts/journal-webfont.woff2') format('woff2'),
+        url('fonts/journal-webfont.woff') format('woff');
+}
+
+@font-face {
+    /* custom name our font */
+    font-family: 'headings';
+    /* grab our font */
+    src: url('fonts/veteran_typewriter-webfont.woff2') format('woff2'),
+        url('fonts/veteran_typewriter-webfont.woff') format('woff');
+}
+
+body {
+    font: 1.3em sans-serif;
+    padding: 0.5em;
+    background: rgb(49, 49, 49);
+}
+
+form {
+    width: 679px;
+    height: 434px;
+    position: relative;
+    margin: 0 auto;
+    padding: 1em;
+    box-sizing: border-box;
+    background: url(postcard_background.png);
+
+    /* we create our grid */
+    display: grid;
+    /* This grid has a 18px gap between both the rows and the columns */
+    grid-gap: 18px;
+    /* The CSS Grid has a new unit that solves our problem elegantly. The fractional unit (fr) solves the problem of automatically distributing space.
+    using repeat says we want 2 columns with equal width - each take a 1 fractional unit     */
+    grid-template-columns: repeat(2, 1fr); 
+    /* now lets define the row heights */
+    grid-template-rows: 11.3em 1.5em 1.5em auto;
+    
+}
+
+/* Notice that we've used some CSS Grid and Flexbox to lay out the form. Using this we can easily position our elements, including the title and all the form elements: */
+h1 {
+    font-family: "headings";
+    font-size: 1em;
+    font-weight: lighter;
+    /* The align-self CSS property overrides a grid align value. The end value aligns the item at the bottom of the grid */
+    align-self: end;
+}
+
+#message {
+    /* make our message div start on row 1 and span all 4 rows */
+    grid-row: 1 / span 4;
+}
+
+/* Labels and controls Now we can start working on the form elements themselves. First,
+let's ensure that the <label>s are given the right font: */
+
+label {
+    font: 1em "headings";
+}
+
+/* The text fields require some common rules. Simply put, we remove their borders and backgrounds, and redefine their padding and margin: */
+
+input,
+textarea {
+    border: none;
+    background: none;
+    font: 1.5em "handwriting";
+    padding: 0 10px;
+    width: 60%;
+}
+
+/* When one of these fields gains focus, we highlight them with a light grey, transparent, background (it is always important to have focus style, for usability and keyboard accessibility): */
+
+input:focus,
+textarea:focus {
+    background: rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+input#name,
+input#mail {
+    font-size: 1.5em;
+    outline: none; 
+}
+
+div#from {
+    /* we want our 'from' and 'reply right above the line on the card' */
+    align-self: center;
+    padding-bottom: 10px;
+}
+
+div#reply {
+    align-self: center;
+}
+
+#message > label {
+    /* bring down our message heading */
+    position: absolute;
+    left: 30px;
+    top: 100px;
+}
+
+textarea {
+    height: 70%;
+    width: 90%;
+    /* bring down textarea to below our message header. Remember, we brought our label down by 100px so lets do the same with the textarea */
+    margin: 100px 0 0 0;
+    outline: none; 
+}
+
+/* Styling the submit button The <button>element is really convenient to style with CSS;
+you can do whatever you want, even using pseudo-elements: */
+
+button {
+    padding: 5px;
+    font: bold .6em sans-serif;
+    border: 2px solid #333;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    transform: rotate(-1.5deg);
+}
+
+button::after {
+    content: " >>>";
+}
+
+button:hover,
+button:focus {
+    outline: none;
+    background: #000;
+    color: #FFF;
+}

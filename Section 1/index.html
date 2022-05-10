@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8' />
+    <title>Personal Profile</title>
+    <link rel='stylesheet' href='styles.css' />
+</head>
+
+<body>
+    <header class='profile-header'>
+        <h1>Personal Profile</h1>
+        <p><em>Update your profile so others can get to know you better</em></p>
+    </header>
+
+    <form action='' method='get' class='profile-form'>
+        <div class='form-row'>
+            <label for='fname'>First Name</label>
+            <input type='text' id='fname' name='fname'/>
+        </div>
+        
+        <div class='form-row'>
+            <label for='email'>Email</label>
+            <input id='email' name='email' type='email' placeholder='wally@gmail.com'/>
+        </div>
+
+        <fieldset class='radio-form-row'>
+            <legend>Allow push notifications?</legend>
+            <!--  first selection - no -->
+            <input type='radio' id='push-type-1' name='push-type' value='no' />
+            <label for='push-type-1' class='radio-label'>No</label>
+            <!--  second selection - yes -->
+            <input type='radio' id='push-type-2' name='push-type' value='yes' checked />
+            <label for='push-type-2' class='radio-label'>Yes</label>
+        </fieldset>
+
+        <div class='form-row'>
+            <label for='color'>Pick a profile color</label>
+            <select id='color' name='color'>
+                <option value='blue'>Blue</option>
+                <option value='green'>Green</option>
+                <option value='dark'>Dark</option>
+                <option value='light'>Light</option>
+            </select>
+        </div>
+
+        <div class='form-row'>
+            <label for='description'>Your profile description</label>
+            <textarea id='description' name='description'></textarea>
+            <div class='description'>Describe yourself here hobbies and interests here</div>
+        </div>
+
+        <div class='form-row'>
+            <label class='checkbox-label' for='available'>
+                <input id='available' name='available' type='checkbox' value='is-available' />
+                <span>I am generally a happy person</span>
+            </label>
+        </div>
+
+        <div class='form-row'>
+            <button>Update</button>
+        </div>
+
+    </form>
+    
+</body>
+</html>

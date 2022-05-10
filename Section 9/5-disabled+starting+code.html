@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Shipping form</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            /* let's center our form */
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        fieldset {
+            padding: 10px 30px 0;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            color: white;
+            background: rgb(48, 149, 231);
+            padding: 5px 10px;
+        }
+
+        /* the CSS combinator > means a child. So here, we're finding a div element that is a child of <fieldset> */
+        fieldset>div {
+            margin-bottom: 20px;
+            display: flex;
+        }
+
+        button,
+        label,
+        input[type="text"] {
+            display: block;
+            font-family: inherit;
+            font-size: 100%;
+            box-sizing: border-box;
+            width: 100%;
+            padding: 5px;
+        }
+        
+
+        input {
+            /* The presence of the inset keyword changes the shadow to one inside the frame. */
+            box-shadow: inset 1px 1px 3px #ccc;
+            border-radius: 5px;
+        }
+
+        input:hover,
+        input:focus {
+            background-color: rgb(235, 229, 229);
+        }
+
+        /* We've directly selected the inputs we want to disable using input[type="text"]:disabled, but we also wanted to gray out the corresponding text labels. These weren't quite as easy to select, so we've used a class to provide them with that styling. */
+
+        input[type="text"]:disabled {
+            background: rgba(95, 95, 95, 0.418);
+            border: 1px solid rgb(255, 140, 140);
+        }
+
+        .disabled-label {
+            color: rgb(78, 78, 78);
+        }
+
+        /* let's style our submit button */
+        button {
+            background: #4CAF50;
+            color: white; 
+            padding: 10px;
+            width: 50%;
+            margin: 0 auto;
+            border: 1px solid green; 
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <!-- delivery address -->
+        <fieldset>
+            <legend>Delivery address</legend>
+            <div>
+                <label for="deliveryName">Name: </label>
+                <input id="deliveryName" name="deliveryName" type="text" required>
+            </div>
+            <div>
+                <label for="deliveryAddress">Address: </label>
+                <input id="deliveryAddress" name="deliveryAddress" type="text" required>
+            </div>
+        </fieldset>
+        <!-- billing address -->
+        <fieldset id="billing">
+            <legend>Billing address</legend>
+            <!-- create checkbox -->
+            <div>
+                <label for="billing-checkbox">Same as your delivery address:</label>
+                <input type="checkbox" id="billing-checkbox" checked>
+            </div>
+            <!-- name and address code -->
+            <div>
+                <label for="billingName" class="billing-label disabled-label">Name: </label>
+                <input id="billingName" name="billingName" type="text" disabled required>
+            </div>
+            <div>
+                <label for="billingAddress" class="billing-label disabled-label">Address: </label>
+                <input id="billingAddress" name="billingAddress" type="text" disabled required>
+            </div>
+        </fieldset>
+
+        <div><button>Submit</button></div>
+    </form>
+
+    <script>
+        // we will write JavaScript here to target the "change" event and do 2 things: 1. add/remove a disabled ATTRIBUTE on each input element and 2. add/remove the disabled-label CLASS styling
+    </script>
+</body>
+
+</html>

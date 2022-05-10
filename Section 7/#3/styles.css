@@ -1,0 +1,32 @@
+:root {
+    --primary-bgColor: #666666;
+    --primary-textColor: #ffffff;
+}
+
+body {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    background: var(--primary-bgColor);
+}
+
+.wrapper {
+    width: 100%;
+    background: rgb(224,224,224);
+    padding: 1em;
+}
+
+.picker {
+    display: inline; 
+}
+
+.main {
+    color: var(--primary-textColor);
+    transition: all .16s ease-in-out;
+    padding: 1em;
+}
+
+.content {
+    width: 50%; 
+    margin: 0 auto; 
+}

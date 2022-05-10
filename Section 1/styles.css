@@ -1,0 +1,184 @@
+/* lets utilize the latest CSS variable functionality so we can define some root level CSS rules */
+:root {
+    --margin-bottom: 10px;
+    --label-padding-right: 20px;
+    --label-width: 200px;
+    --widget-width: 250px;
+    --border-radius: 4px;
+    --main-padding: 30px;
+    --input-text-size: 14px;
+    --color-main: #5D6063;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /* The box-sizing property allows us to include the padding and border in an element's total width and height. If you set box-sizing: border-box; on an element, padding and border are included in the width and height:*/
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--color-main);
+    background-color: rgb(182, 219, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    /* I want to now define a flexbox layout. This is an alternative to using floats for defining the overall appearance of a web page. Whereas floats only let us horizontally position our boxes, flexbox gives us complete control over the alignment, direction, order, and size of our boxes. */
+
+    /* lets define our body element as the flex container  */
+    display: flex;
+    /* lets render all items in our form vertically */
+    flex-direction: column;
+    /* we can now center each column */
+    align-items: center;
+}
+
+.profile-header {
+    text-align: center;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid rgb(186, 189, 190);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+
+    margin: 25px 0; /* top/bottom left/right */
+    padding: var(--main-padding);
+}
+
+/* ********** FORM STYLING **********  */
+
+.profile-form {
+    background-color: rgb(241, 238, 238);
+    border: 1px solid rgb(186, 189, 190);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+    padding: var(--main-padding);
+}
+
+/* ********** INPUT TEXT STYLING **********  */
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.form-row input[type='text'],
+.form-row input[type='email'] {
+    border-radius: var(--border-radius);
+    color: var(--color-main);
+    font-size: var(--input-text-size);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(186, 189, 190);
+    padding: 7px;
+}
+
+.form-row label {
+    margin-bottom: 20px;
+}
+
+.profile-header,
+.profile-form {
+    width: 600px;
+}
+
+.form-row input[type='text'],
+.form-row input[type='email'],
+.form-row select {
+    width: var(--widget-width);
+}
+
+.form-row label {
+    width: var(--label-width);
+    padding-right: var(--label-padding-right);
+    text-align: right;
+    margin-top: 5px;
+}
+
+.form-row input[type='text']:invalid,
+.form-row input[type='email']:invalid {
+    border: 1.5px solid rgb(212, 53, 56);
+    color: rgb(212, 53, 56);
+}
+
+
+/* ********** RADIO BUTTONS STYLING **********  */
+
+.radio-form-row {
+    /* lets get rid of the default styling for <fieldset> and <legend> elements */
+    border: none;
+    margin-bottom: var(--margin-bottom);
+}
+
+.radio-form-row .radio-label {
+    font-size: var(--input-text-size);
+    padding: 2px 20px 0 4px;
+}
+
+.radio-form-row legend {
+    width: var(--label-width);
+    /* matching our above width on the input elements */
+    text-align: right;
+    padding-right: var(--label-padding-right);
+    /* we need to float everything to the left so they appear on the same line. */
+    float: left;
+}
+
+/* ********** DROPDOWN MENUS STYLING **********  */
+
+.form-row select {
+    padding: 5px;
+    font-size: var(--input-text-size);
+    color: #5D6063;
+}
+
+/* ********** TEXTAREA MENUS STYLING **********  */
+
+.form-row textarea {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 14px;
+
+    border: 1px solid #D6D9DC;
+    border-radius: var(--border-radius);
+
+    min-height: 100px;
+    margin-bottom: var(--margin-bottom);
+    padding: 10px;
+    width: var(--widget-width);
+}
+
+.form-row .description {
+    color: #999999;
+    font-size: 14px;
+    margin-bottom: var(--margin-bottom);
+    margin-left: var(--label-width);
+}
+
+/* ********** CHECKBOX STYLING **********  */
+
+.form-row .checkbox-label {
+    margin-left: var(--label-width);
+    width: auto;
+}
+
+/* ********** BUTTON STYLING **********  */
+.form-row button {
+    font-size: 1em;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: rgb(231, 2, 2);
+
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 40px;
+    /* top/bottom vs left/right */
+    cursor: pointer;
+
+    margin-left: var(--label-width);
+}
+
+.form-row button:hover {
+    background-color: rgb(255, 30, 30);
+}
+
+.form-row button:active {
+    background-color: rgb(212, 60, 49);
+}

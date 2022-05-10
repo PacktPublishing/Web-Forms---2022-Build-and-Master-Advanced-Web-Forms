@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Color Theme Picker</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- background color picker -->
+            <div class="picker">
+                <label>Background:</label>
+                <input type="color" class="input-color-picker" data-id="bgColor">
+            </div>
+
+            <!-- text color picker -->
+            <div class="picker">
+                <label>Color:</label>
+                <input type="color" class="input-color-picker" data-id="textColor">
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="content">
+                <main>
+                    <h1>This is your main page</h1>
+                    <p>This is a great example of using <code> &lt;input type="color"&gt; </code> outside of a form - <em>cool right? </em></p>
+                    <p>Although this course is all about forms, and hence we're learning about form widgets, the skills you learn will give you the ability to use these widgets in many different applications</p>
+                </main>
+                <footer>
+                    <small>A cool tiny project by Clyde</small>
+                </footer>
+            </div>
+        </div>
+        <script>
+            const dynamicInputs = document.querySelectorAll('input.input-color-picker');
+
+            dynamicInputs.forEach((item) => {
+                item.addEventListener('input', (e) => {
+                    const cssPropName = `--primary-${e.target.getAttribute('data-id')}`;
+                    const root = document.querySelector(':root');
+                    root.style.setProperty(cssPropName, e.target.value);
+                })
+            })
+        </script>
+    </body>
+</html>

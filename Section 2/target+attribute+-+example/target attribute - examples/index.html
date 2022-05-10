@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+            #leftFrame {
+                width: 20%;
+                height: 100%;
+                border:none;
+            }
+
+            #parent {
+                /* we've set the left frame at 20% width, so the parent div element should take up the remainder */
+                /* margin is set at 8px by default, so lets reduce 8px so that all of our iframes fit in one row. we will use the calc() funciton */
+                width: calc(80% - 8px);
+                display: inline-block;
+            }
+
+            /* apply some simple styling to our iframes */
+            #Frame1, #Frame2, #Frame3, #Frame4, #Frame5, #Frame6 {
+                width: 100%;
+                border:none;
+                /* remember, there are 6 iframes, so we need to split their height into 6. Again, lets use the calc() function */
+                height: calc(100%/6);
+            }
+            
+        </style>
+    </head>
+    <!-- historically I may have given you an example using <FRAMESET>. But HTML5 has made this obsolete. So I'll use the modern iframe for this example. -->
+    <body id="main">
+        <iframe src="/leftFrame.html" id="leftFrame" id="leftFrame"></iframe>
+        <div id="parent">
+            <iframe src="/topFrame.html" id="Frame1"></iframe>
+            <iframe src="/mainLink_top.html" id="Frame2"></iframe>
+            <iframe src="/mainLink_parent.html" id="Frame3"></iframe>
+            <iframe src="/mainLink_self.html" id="Frame4"></iframe>
+            <iframe src="/mainLink_blank.html" id="Frame5"></iframe>
+            <iframe src="/mainLink_custom.html" id="Frame6"></iframe>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <!-- lets insert all of our styles into an external CSS file called buttons.css -->
+        <link rel="stylesheet" href="buttons.css">
+    </head>
+    <body>
+         <div class="wrapper">
+             <h1>Defining the type in buttons is important</h1>
+         </div>
+
+         <div class="wrapper">
+             <!-- lets wrap our first lot of buttons within a <form> -->
+             <form>
+                 <fieldset class='form'>
+                     <legend>This is a cool form</legend>
+                     <p>These buttons are inside the <code>form</code>.</p>
+                     <input type="text" name="username">
+                     <p>When the form data is submitted, the background colour changes.</p>
+                     <button type="submit">Type: "submit"</button>
+                     <button type="button">Type: "button"</button>
+                     <button type="reset">Type: "reset"</button>
+                     <button>Type: none</button>
+                 </fieldset>
+             </form>
+         </div>
+
+         <div class="wrapper">
+             <fieldset>
+                 <legend>These buttons are outside the form</legend>
+                 <p>For comparison, these buttons are outside the form. As such, they won't trigger the <code>submit</code> event. They will do nothing.</p>
+                 <p>
+                     <!-- if you want, try add the form attribute to the button with type:submit and see what happens -->
+                     <button type="submit">Type: "submit"</button>
+                     <button type="button">Type: "button"</button>
+                     <button type="reset">Type: "reset"</button>
+                     <button>Type: none</button>
+                 </p>
+             </fieldset>
+         </div>
+
+         <div class="wrapper">
+             <p>The form above executes a JavaScript function whenever the <code>submit</code> event is fired. The function changes the background colour of this page. The form contains 4 buttons, each with a different <code>type</code> attribute value: <code>type="submit"</code>, <code>type="button"</code>, <code>type="reset"</code> and no <code>type</code> attribute. Click each button and notice which ones trigger the <code>onsubmit</code> event.
+         </div>
+
+         <script>
+            //  grab our form
+            let form = document.forms[0];
+             // add an event listener (see my DOM course if you are not comfortable with DOM event listeners)
+             form.addEventListener("submit", (e) => {
+                 // the default behaviour of a form is to refresh the page when a form submit event is fired. If you scroll down the page, you can see if the default happens, we are taken to the top of the page. Very annoying. So lets prevent this default behaviour. 
+             e.preventDefault();
+             changeBg();
+             });
+
+             // lets define our handler function
+             let changeBg = function(e) {
+             let randomHexValue = "#" + Math.floor(Math.random() * 16777215).toString(16);
+             document.body.style.backgroundColor = randomHexValue;
+             };
+         </script>
+    </body>
+</html>

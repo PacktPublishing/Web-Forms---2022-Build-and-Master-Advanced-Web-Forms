@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style>
+            li {
+                width: 100px;
+                /* flexbox */
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                position: relative;
+            }
+
+            /* Size the label, and lets make the on and off parts sit on top of one another using positioning */
+            label {
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+            }
+
+            label span {
+                position: absolute; 
+            }
+
+            /* remove the default styling of the checkbox using the appearance propery and create the outer toggle area */
+
+            input[type="checkbox"] {
+                appearance: none; 
+                border: 2px solid black; 
+                border-radius: 12px;
+                width: 44px;
+                height: 24px;
+                background: #eee;
+                transform: all 0.4s;
+            }
+
+            /* style the ::before content to look like the inner toggle switch - the bit that moves */
+
+            input[type="checkbox"]::before {
+                content: " ";
+                background-color: black;
+                width: 16px;
+                height: 16px;
+                border-radius: 16px;
+                position: absolute; 
+                top: 7px;
+                left: 16%;
+                transition: all 0.4s;
+            }
+
+            /* change the outer background color AND move the inner toggle switch when the checkbox is checked; use transitions for smooth animation */
+
+            input[type="checkbox"]:checked {
+                background-color: rgb(106, 224, 50);
+                transition: all 0.4s;
+            }
+
+            input[type="checkbox"]:checked::before {
+                left: 35%;
+            }
+
+            /* cause the on and off parts of the label to be visible when the checkbox is checked and unchecked, respectively. We're going to use the general sibling CSS selector ~ to select all sibligns of a specified element */
+
+            input[type="checkbox"]~label .on,
+            input[type="checkbox"]:checked~label .off
+             {
+                opacity: 0;
+            }
+
+            input[type="checkbox"]:checked~label .on {
+                opacity: 1; 
+            }
+
+
+
+
+        </style>
+    </head>
+    <body>
+        <form>
+            <ul>
+                <li>
+                    <input type="checkbox" name="power" id="power">
+                    <label for="power"><span class="on">On</span><span class="off">Off</span></label>
+                </li>
+            </ul>
+        </form>
+    </body>
+</html>
