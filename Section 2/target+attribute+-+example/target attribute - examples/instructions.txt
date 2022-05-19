@@ -1,4 +1,0 @@
-open up the main folder (target attribute - examples) in VSC
-click on the index.html file
-start live server and open the index.html file in a browser
-bobs your uncle
